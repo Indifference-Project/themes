@@ -15,6 +15,9 @@ const noop = () => {};
 type ThemeAppearance = (typeof themePropDefs.appearance.values)[number];
 type ThemeAccentColor = (typeof themePropDefs.accentColor.values)[number];
 type ThemeGrayColor = (typeof themePropDefs.grayColor.values)[number];
+// The resolved gray color is never "auto": it is the actual gray computed from
+// "auto" (or inherited from a parent theme)
+type ThemeResolvedGrayColor = Exclude<ThemeGrayColor, 'auto'>;
 type ThemePanelBackground = (typeof themePropDefs.panelBackground.values)[number];
 type ThemeRadius = (typeof themePropDefs.radius.values)[number];
 type ThemeScaling = (typeof themePropDefs.scaling.values)[number];
@@ -32,7 +35,7 @@ interface ThemeContextValue extends ThemeChangeHandlers {
   appearance: ThemeAppearance;
   accentColor: ThemeAccentColor;
   grayColor: ThemeGrayColor;
-  resolvedGrayColor: ThemeGrayColor;
+  resolvedGrayColor: ThemeResolvedGrayColor;
   panelBackground: ThemePanelBackground;
   radius: ThemeRadius;
   scaling: ThemeScaling;
@@ -151,7 +154,8 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     ...themeProps
   } = props;
   const Comp = asChild ? Slot.Root : 'div';
-  const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
+  const resolvedGrayColor: ThemeResolvedGrayColor =
+    grayColor === 'auto' ? getMatchingGrayColor(accentColor) : grayColor;
   const isExplicitAppearance = props.appearance === 'light' || props.appearance === 'dark';
   const hasBackground =
     hasBackgroundProp === undefined ? isRoot || isExplicitAppearance : hasBackgroundProp;
