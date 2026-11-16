@@ -30,21 +30,28 @@
 
 @breakpoints {
   .rt-Inset {
+    /* border-box: clip at the card's outer edge, covering the drawn border
+       (which renders on top via ::after) — full radius, margin compensates
+       for the full padding */
     &:where(.rt-r-clip-border-box) {
-      /* prettier-ignore */
+      --inset-border-radius-calc: var(--inset-border-radius, 0px);
+      --inset-padding-top-calc: calc(var(--inset-padding-top, 0px) + var(--inset-border-width, 0px));
+      --inset-padding-right-calc: calc(
+        var(--inset-padding-right, 0px) + var(--inset-border-width, 0px)
+      );
+      --inset-padding-bottom-calc: calc(
+        var(--inset-padding-bottom, 0px) + var(--inset-border-width, 0px)
+      );
+      --inset-padding-left-calc: calc(var(--inset-padding-left, 0px) + var(--inset-border-width, 0px));
+    }
+    /* padding-box: stop at the inner edge of the drawn border — radius reduced
+       by the border width, margin keeps the border strip visible */
+    &:where(.rt-r-clip-padding-box) {
       --inset-border-radius-calc: calc(var(--inset-border-radius, 0px) - var(--inset-border-width, 0px));
       --inset-padding-top-calc: var(--inset-padding-top, 0px);
       --inset-padding-right-calc: var(--inset-padding-right, 0px);
       --inset-padding-bottom-calc: var(--inset-padding-bottom, 0px);
       --inset-padding-left-calc: var(--inset-padding-left, 0px);
-    }
-    /* prettier-ignore */
-    &:where(.rt-r-clip-padding-box) {
-      --inset-border-radius-calc: var(--inset-border-radius, 0px);
-      --inset-padding-top-calc: calc(var(--inset-padding-top, 0px) + var(--inset-border-width, 0px));
-      --inset-padding-right-calc: calc(var(--inset-padding-right, 0px) + var(--inset-border-width, 0px));
-      --inset-padding-bottom-calc: calc(var(--inset-padding-bottom, 0px) + var(--inset-border-width, 0px));
-      --inset-padding-left-calc: calc(var(--inset-padding-left, 0px) + var(--inset-border-width, 0px));
     }
     &:where(.rt-r-side-top) {
       --margin-top-override: calc(var(--margin-top) - var(--inset-padding-top-calc));
