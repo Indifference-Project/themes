@@ -2,6 +2,13 @@
 
 ## 3.4.0
 
+- Fix lingering global `transition: none` style after changing appearance via `ThemePanel` ([#615](https://github.com/radix-ui/themes/issues/615))
+- Apply disabled styles to `Button`-based components inside disabled `fieldset`s and block interaction when `disabled` is slotted onto non-button elements ([#745](https://github.com/radix-ui/themes/issues/745), [#796](https://github.com/radix-ui/themes/issues/796))
+- Stop styling read-only `TextField` inputs as disabled ([#764](https://github.com/radix-ui/themes/issues/764))
+- Stop forwarding `type` to the visual `Checkbox` button so spreading input props no longer submits the form ([#711](https://github.com/radix-ui/themes/issues/711))
+- Add missing negative utility classes for `inset`, `top`, `right`, `bottom` and `left` layout props ([#690](https://github.com/radix-ui/themes/issues/690), [#735](https://github.com/radix-ui/themes/issues/735))
+- Add `around` and `evenly` values to `Flex`'s `justify` prop ([#664](https://github.com/radix-ui/themes/issues/664))
+- Allow React 16.9+ via the `^16.8` peer dependency range ([#555](https://github.com/radix-ui/themes/issues/555))
 - Expand the prop type for `Select`'s `placeholder` prop to accept any `ReactNode` ([#693](https://github.com/radix-ui/themes/pull/693))
 - Add `ghost-offset` variant to `Button`, `IconButton` and `SelectTrigger` components ([#546](https://github.com/radix-ui/themes/pull/546))
 - Fix broken loading state for `Button` and `IconButton` components using `asChild` ([#752](https://github.com/radix-ui/themes/pull/752))
