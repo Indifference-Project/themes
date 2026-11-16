@@ -25,6 +25,10 @@
   vertical-align: inherit;
 }
 
+.rt-TableFooter {
+  vertical-align: inherit;
+}
+
 .rt-TableRow {
   vertical-align: inherit;
   color: var(--gray-12);

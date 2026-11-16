@@ -55,6 +55,15 @@ const TableBody = React.forwardRef<TableBodyElement, TableBodyProps>(
 );
 TableBody.displayName = 'Table.Body';
 
+type TableFooterElement = React.ElementRef<'tfoot'>;
+interface TableFooterProps extends ComponentPropsWithout<'tfoot', RemovedProps> {}
+const TableFooter = React.forwardRef<TableFooterElement, TableFooterProps>(
+  ({ className, ...props }, forwardedRef) => (
+    <tfoot {...props} ref={forwardedRef} className={classNames('rt-TableFooter', className)} />
+  ),
+);
+TableFooter.displayName = 'Table.Footer';
+
 type TableRowElement = React.ElementRef<'tr'>;
 type TableRowOwnProps = GetPropDefTypes<typeof tableRowPropDefs>;
 interface TableRowProps extends ComponentPropsWithout<'tr', RemovedProps>, TableRowOwnProps {}
@@ -115,6 +124,7 @@ export {
   TableRoot as Root,
   TableHeader as Header,
   TableBody as Body,
+  TableFooter as Footer,
   TableRow as Row,
   TableCell as Cell,
   TableColumnHeaderCell as ColumnHeaderCell,
