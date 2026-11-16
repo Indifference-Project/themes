@@ -2,6 +2,12 @@
 
 ## 3.4.0
 
+- Fix misaligned values in `TextField` inputs of type date/time on Firefox ([#527](https://github.com/radix-ui/themes/issues/527))
+- Stop accepting `checked` on `RadioGroup.Item` and `RadioCards.Item`, where it overrode the state derived from the root's `value` prop ([#451](https://github.com/radix-ui/themes/issues/451))
+- Forward the `dir` prop on `ScrollArea` to the underlying root ([#628](https://github.com/radix-ui/themes/issues/628))
+- Add `disabled` prop to `Tooltip` ([#719](https://github.com/radix-ui/themes/issues/719))
+- Use `border-collapse: separate` on `Table` so `position: sticky` works on headers ([#767](https://github.com/radix-ui/themes/issues/767))
+- Declare types for CSS side-effect imports, fixing `noUncheckedSideEffectImports` under TypeScript 7 ([#801](https://github.com/radix-ui/themes/issues/801))
 - Expand the prop type for `Select`'s `placeholder` prop to accept any `ReactNode` ([#693](https://github.com/radix-ui/themes/pull/693))
 - Add `ghost-offset` variant to `Button`, `IconButton` and `SelectTrigger` components ([#546](https://github.com/radix-ui/themes/pull/546))
 - Fix broken loading state for `Button` and `IconButton` components using `asChild` ([#752](https://github.com/radix-ui/themes/pull/752))
