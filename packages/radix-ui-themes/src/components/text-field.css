@@ -390,6 +390,12 @@
   }
 }
 
+/* Invalid state (#586): render a red ring when the input is marked invalid,
+   either explicitly via aria-invalid or natively via :user-invalid */
+.rt-TextFieldRoot:where(:has(.rt-TextFieldInput:where([aria-invalid='true'], :user-invalid))) {
+  box-shadow: inset 0 0 0 1px var(--red-a8);
+}
+
 /* all disabled text fields */
 
 .rt-TextFieldInput {
