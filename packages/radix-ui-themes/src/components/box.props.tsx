@@ -2,16 +2,18 @@ import { asChildPropDef } from '../props/as-child.prop.js';
 
 import type { PropDef, GetPropDefTypes } from '../props/prop-def.js';
 
-const as = ['div', 'span'] as const;
+const as = ['div', 'span', 'article', 'aside', 'footer', 'header', 'main', 'nav', 'section'] as const;
 const displayValues = ['none', 'inline', 'inline-block', 'block', 'contents'] as const;
 
 const boxPropDefs = {
   /**
-   * Controls whether to render **div** or **span**
+   * Controls which HTML tag is rendered, e.g. **div** or **span** as well as
+   * common semantic elements
    *
    * @example
    * as="div"
    * as="span"
+   * as="nav"
    */
   as: { type: 'enum', values: as, default: 'div' },
   ...asChildPropDef,
