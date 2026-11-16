@@ -31,6 +31,11 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
     checked: checkedProp,
     defaultChecked: defaultCheckedProp,
     onCheckedChange,
+    // Strip `type` so it is not forwarded to the visual `<button>`: an invalid
+    // button type falls back to "submit" and clicking the checkbox would submit
+    // the surrounding form. The hidden bubble input rendered by the primitive
+    // already uses `type="checkbox"`.
+    type: _type,
     ...checkboxProps
   } = extractProps(props, checkboxPropDefs, marginPropDefs);
 
