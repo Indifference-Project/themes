@@ -207,6 +207,7 @@ const ThemePanelContent = React.forwardRef<ThemePanelContentElement, ThemePanelC
 
         if (appearance !== 'inherit') {
           onAppearanceChange(value);
+          cleanup();
           return;
         }
 
