@@ -2,6 +2,13 @@
 
 ## 3.4.0
 
+- Support 20 items, RTL direction and vertical orientation in `SegmentedControl` ([#730](https://github.com/radix-ui/themes/issues/730), [#720](https://github.com/radix-ui/themes/issues/720), [#729](https://github.com/radix-ui/themes/issues/729))
+- Stop pointer events on disabled `Select` triggers so a `Select` inside a disabled `fieldset` cannot be opened ([#746](https://github.com/radix-ui/themes/issues/746))
+- Darken `Callout` text slightly so it meets WCAG AA contrast on tinted backgrounds for every accent color ([#694](https://github.com/radix-ui/themes/issues/694))
+- Match native `textarea` types for `TextArea`'s `value`/`defaultValue` props ([#564](https://github.com/radix-ui/themes/issues/564))
+- Exclude `"auto"` from the `resolvedGrayColor` type ([#639](https://github.com/radix-ui/themes/issues/639))
+- Support common semantic HTML tags in `Box`'s `as` prop ([#587](https://github.com/radix-ui/themes/issues/587))
+- Add `Table.Footer` component ([#524](https://github.com/radix-ui/themes/issues/524))
 - Fix lingering global `transition: none` style after changing appearance via `ThemePanel` ([#615](https://github.com/radix-ui/themes/issues/615))
 - Apply disabled styles to `Button`-based components inside disabled `fieldset`s and block interaction when `disabled` is slotted onto non-button elements ([#745](https://github.com/radix-ui/themes/issues/745), [#796](https://github.com/radix-ui/themes/issues/796))
 - Stop styling read-only `TextField` inputs as disabled ([#764](https://github.com/radix-ui/themes/issues/764))
