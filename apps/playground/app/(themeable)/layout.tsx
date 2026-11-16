@@ -1,3 +1,5 @@
+'use client';
+
 import { Theme, ThemePanel } from '@radix-ui/themes';
 
 export default function Layout({ children }: LayoutProps<'/'>) {
