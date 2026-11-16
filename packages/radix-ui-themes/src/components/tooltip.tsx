@@ -19,6 +19,8 @@ interface TooltipProps
     TooltipOwnProps {
   content: React.ReactNode;
   container?: React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Portal>['container'];
+  /** Disables the tooltip so that only the child element is rendered */
+  disabled?: boolean;
 }
 const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwardedRef) => {
   const {
@@ -32,9 +34,14 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     content,
     container,
     forceMount,
+    disabled = false,
     ...tooltipContentProps
   } = extractProps(props, tooltipPropDefs);
   const rootProps = { open, defaultOpen, onOpenChange, delayDuration, disableHoverableContent };
+
+  // Render only the child so that the tooltip is fully suppressed
+  if (disabled) return <>{children}</>;
+
   return (
     <TooltipPrimitive.Root {...rootProps}>
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
