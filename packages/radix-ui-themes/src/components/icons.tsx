@@ -50,6 +50,27 @@ const ThickCheckIcon = React.forwardRef<IconElement, IconProps>((props, forwarde
 });
 ThickCheckIcon.displayName = 'ThickCheckIcon';
 
+const ThickCrossIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+  return (
+    <svg
+      width="9"
+      height="9"
+      viewBox="0 0 9 9"
+      fill="currentcolor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={forwardedRef}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M1.46967 0.46967C1.76256 0.176777 2.23744 0.176777 2.53033 0.46967L4.5 2.43934L6.46967 0.46967C6.76256 0.176777 7.23744 0.176777 7.53033 0.46967C7.82322 0.762563 7.82322 1.23744 7.53033 1.53033L5.56066 3.5L7.53033 5.46967C7.82322 5.76256 7.82322 6.23744 7.53033 6.53033C7.23744 6.82322 6.76256 6.82322 6.46967 6.53033L4.5 4.56066L2.53033 6.53033C2.23744 6.82322 1.76256 6.82322 1.46967 6.53033C1.17678 6.23744 1.17678 5.76256 1.46967 5.46967L3.43934 3.5L1.46967 1.53033C1.17678 1.23744 1.17678 0.762563 1.46967 0.46967Z"
+      />
+    </svg>
+  );
+});
+ThickCrossIcon.displayName = 'ThickCrossIcon';
+
 const ChevronDownIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
   return (
     <svg
@@ -88,5 +109,5 @@ const ThickChevronRightIcon = React.forwardRef<IconElement, IconProps>((props, f
 });
 ThickChevronRightIcon.displayName = 'ThickChevronRightIcon';
 
-export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDividerHorizontalIcon };
+export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickCrossIcon, ThickDividerHorizontalIcon };
 export type { IconProps };

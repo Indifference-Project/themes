@@ -4,8 +4,10 @@ import { Dialog as DialogPrimitive } from 'radix-ui';
 
 import { dialogContentPropDefs } from './dialog.props.js';
 import { Heading } from './heading.js';
+import { IconButton } from './icon-button.js';
 import { Text } from './text.js';
 import { Theme } from './theme.js';
+import { ThickCrossIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
 
@@ -40,12 +42,17 @@ interface DialogContentProps
     ComponentPropsWithout<typeof DialogPrimitive.Content, RemovedProps>,
     DialogContentOwnProps {
   container?: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>['container'];
+  /** Render a close button in the top-right corner of the dialog */
+  closeButton?: boolean;
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
   ({ align, ...props }, forwardedRef) => {
     const { align: alignPropDef, ...propDefs } = dialogContentPropDefs;
     const { className: alignClassName } = extractProps({ align }, { align: alignPropDef });
-    const { className, forceMount, container, ...contentProps } = extractProps(props, propDefs);
+    const { className, forceMount, container, closeButton, children, ...contentProps } = extractProps(
+      props,
+      propDefs,
+    );
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -58,7 +65,21 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
                   {...contentProps}
                   ref={forwardedRef}
                   className={classNames('rt-BaseDialogContent', 'rt-DialogContent', className)}
-                />
+                >
+                  {children}
+                  {closeButton && (
+                    <DialogPrimitive.Close asChild>
+                      <IconButton
+                        variant="ghost"
+                        color="gray"
+                        className="rt-DialogContentCloseButton"
+                        aria-label="Close"
+                      >
+                        <ThickCrossIcon />
+                      </IconButton>
+                    </DialogPrimitive.Close>
+                  )}
+                </DialogPrimitive.Content>
               </div>
             </div>
           </DialogPrimitive.Overlay>

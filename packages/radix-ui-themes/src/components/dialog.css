@@ -1,1 +1,8 @@
 @import './_internal/base-dialog.css';
+
+/* Optional built-in close button (<Dialog.Content closeButton>) */
+.rt-DialogContentCloseButton {
+  position: absolute;
+  top: var(--space-2);
+  inset-inline-end: var(--space-2);
+}
