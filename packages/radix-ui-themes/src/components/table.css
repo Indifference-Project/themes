@@ -5,7 +5,10 @@
   width: 100%;
   text-align: left;
   vertical-align: top;
-  border-collapse: collapse;
+  /* `border-collapse: separate` with 0 spacing renders the same as `collapse` here
+     (row separators are drawn with box shadows, not real borders), but unlike
+     `collapse` it keeps `position: sticky` working on `thead`/`th` (#767) */
+  border-collapse: separate;
   border-radius: calc(var(--table-border-radius) - 1px);
   border-spacing: 0;
   box-sizing: border-box;

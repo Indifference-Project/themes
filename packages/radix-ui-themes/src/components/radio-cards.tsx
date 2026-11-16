@@ -40,17 +40,30 @@ const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootPro
 RadioCardsRoot.displayName = 'RadioCards.Root';
 
 type RadioCardsItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
+// `checked` is stripped: the checked state of an item is derived from the root's
+// `value` prop, and forwarding `checked` to the underlying `<button>` breaks it
 interface RadioCardsItemProps
-  extends ComponentPropsWithout<typeof RadioGroupPrimitive.Item, RemovedProps>, MarginProps {}
+  extends ComponentPropsWithout<
+    typeof RadioGroupPrimitive.Item,
+    RemovedProps | 'checked'
+  >, MarginProps {}
 const RadioCardsItem = React.forwardRef<RadioCardsItemElement, RadioCardsItemProps>(
-  ({ className, ...props }, forwardedRef) => (
-    <RadioGroupPrimitive.Item
-      {...props}
-      asChild={false}
-      ref={forwardedRef}
-      className={classNames('rt-reset', 'rt-BaseCard', 'rt-RadioCardsItem', className)}
-    />
-  ),
+  (props, forwardedRef) => {
+    // `checked` is intentionally absent from the public props. Strip it here as
+    // well so that plain-JS callers can't override the checked state that the
+    // primitive derives from the root's `value` prop.
+    const { className, checked: _checked, ...itemProps } = props as typeof props & {
+      checked?: boolean;
+    };
+    return (
+      <RadioGroupPrimitive.Item
+        {...itemProps}
+        asChild={false}
+        ref={forwardedRef}
+        className={classNames('rt-reset', 'rt-BaseCard', 'rt-RadioCardsItem', className)}
+      />
+    );
+  },
 );
 RadioCardsItem.displayName = 'RadioCards.Item';
 

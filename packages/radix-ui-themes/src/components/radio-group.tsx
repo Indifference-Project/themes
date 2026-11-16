@@ -68,11 +68,22 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
 RadioGroupRoot.displayName = 'RadioGroup.Root';
 
 type RadioGroupItemElement = React.ElementRef<typeof RadioGroupItemRadio>;
+// `checked` is stripped: the checked state of an item is derived from the root's
+// `value` prop, and forwarding `checked` to the underlying `<button>` breaks it
 interface RadioGroupItemProps
-  extends ComponentPropsWithout<typeof RadioGroupItemRadio, RemovedProps>, MarginProps {}
+  extends Omit<
+      ComponentPropsWithout<typeof RadioGroupItemRadio, RemovedProps>,
+      'checked'
+    >, MarginProps {}
 const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemProps>(
   (_props: ScopedProps<RadioGroupItemProps>, forwardedRef) => {
-    const { __scopeRadioGroup, children, className, style, ...props } = _props;
+    // `checked` is intentionally absent from the public props. Strip it here as
+    // well so that plain-JS callers can't override the checked state that the
+    // primitive derives from the root's `value` prop.
+    const { checked: _checked, ...propsWithoutChecked } = _props as typeof _props & {
+      checked?: boolean;
+    };
+    const { __scopeRadioGroup, children, className, style, ...props } = propsWithoutChecked;
     const { size } = useRadioGroupContext('RadioGroupItem', __scopeRadioGroup);
 
     // Render `<Text as="label">` if children are provided, otherwise render
@@ -109,13 +120,17 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
 RadioGroupItem.displayName = 'RadioGroup.Item';
 
 type RadioGroupItemRadioElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
-interface RadioGroupItemRadioProps extends React.ComponentPropsWithoutRef<
-  typeof RadioGroupPrimitive.Item
+interface RadioGroupItemRadioProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>,
+  'checked'
 > {}
 const RadioGroupItemRadio = React.forwardRef<
   RadioGroupItemRadioElement,
   ScopedProps<RadioGroupItemRadioProps>
->(({ __scopeRadioGroup, ...props }, forwardedRef) => {
+>((_props, forwardedRef) => {
+  const { __scopeRadioGroup, checked: _checked, ...props } = _props as typeof _props & {
+    checked?: boolean;
+  };
   const context = useRadioGroupContext('RadioGroupItemRadio', __scopeRadioGroup);
   const radioGroupScope = useRadioGroupScope(__scopeRadioGroup);
   const { color, className } = extractProps(
