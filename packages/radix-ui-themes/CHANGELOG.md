@@ -2,6 +2,14 @@
 
 ## 3.4.0
 
+- Fix `Inset`'s `clip="border-box"` and `clip="padding-box"` calculations being swapped, which made the default inset stop 1px short of the card edge ([#812](https://github.com/radix-ui/themes/issues/812))
+- Invert the appearance of `Tooltip` content so accent-colored components stay readable ([#418](https://github.com/radix-ui/themes/issues/418), [#440](https://github.com/radix-ui/themes/issues/440), [#476](https://github.com/radix-ui/themes/issues/476))
+- Support the `disabled` prop on `SegmentedControl.Item` ([#489](https://github.com/radix-ui/themes/issues/489))
+- Add `DataList.Separator` ([#533](https://github.com/radix-ui/themes/issues/533))
+- Add `autoResize` prop to `TextArea` ([#570](https://github.com/radix-ui/themes/issues/570))
+- Render a red ring on `TextField` inputs marked invalid via `aria-invalid` or `:user-invalid` ([#586](https://github.com/radix-ui/themes/issues/586))
+- Add a responsive `order` layout prop for flex and grid children ([#436](https://github.com/radix-ui/themes/issues/436))
+- Add an optional built-in close button to `Dialog.Content` via the `closeButton` prop ([#630](https://github.com/radix-ui/themes/issues/630))
 - Support 20 items, RTL direction and vertical orientation in `SegmentedControl` ([#730](https://github.com/radix-ui/themes/issues/730), [#720](https://github.com/radix-ui/themes/issues/720), [#729](https://github.com/radix-ui/themes/issues/729))
 - Stop pointer events on disabled `Select` triggers so a `Select` inside a disabled `fieldset` cannot be opened ([#746](https://github.com/radix-ui/themes/issues/746))
 - Darken `Callout` text slightly so it meets WCAG AA contrast on tinted backgrounds for every accent color ([#694](https://github.com/radix-ui/themes/issues/694))
