@@ -43,6 +43,11 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
       defaultProp: defaultValueProp,
     });
 
+    // The indicator's width styles are generated per item count in CSS; this
+    // variable keeps the width correct for controls with more items than the
+    // CSS table covers
+    const itemCount = React.Children.toArray(children).length;
+
     return (
       <ToggleGroupPrimitive.Root
         data-disabled={props.disabled || undefined}
@@ -55,6 +60,12 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
           }
         }}
         {...rootProps}
+        style={
+          {
+            ...props.style,
+            '--segmented-control-item-count': itemCount,
+          } as React.CSSProperties
+        }
         type="single"
         value={value}
         asChild={false}

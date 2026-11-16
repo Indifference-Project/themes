@@ -141,7 +141,7 @@
   position: absolute;
   z-index: -1;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   height: 100%;
   pointer-events: none;
   transition-property: transform;
@@ -169,6 +169,9 @@
     }
   }
 
+  /* Width per item count. The indicator is the last child of the root, so an
+     indicator on :nth-child(N + 1) means there are N items. Kept in sync with
+     the transform tables below. */
   &:where(:nth-child(2)) {
     width: calc(100% / 1);
   }
@@ -199,7 +202,41 @@
   &:where(:nth-child(11)) {
     width: calc(100% / 10);
   }
+  &:where(:nth-child(12)) {
+    width: calc(100% / 11);
+  }
+  &:where(:nth-child(13)) {
+    width: calc(100% / 12);
+  }
+  &:where(:nth-child(14)) {
+    width: calc(100% / 13);
+  }
+  &:where(:nth-child(15)) {
+    width: calc(100% / 14);
+  }
+  &:where(:nth-child(16)) {
+    width: calc(100% / 15);
+  }
+  &:where(:nth-child(17)) {
+    width: calc(100% / 16);
+  }
+  &:where(:nth-child(18)) {
+    width: calc(100% / 17);
+  }
+  &:where(:nth-child(19)) {
+    width: calc(100% / 18);
+  }
+  &:where(:nth-child(20)) {
+    width: calc(100% / 19);
+  }
+  &:where(:nth-child(21)) {
+    width: calc(100% / 20);
+  }
+  &:where(:nth-child(n + 22)) {
+    width: calc(100% / var(--segmented-control-item-count, 1));
+  }
 
+  /* Transform per active item (LTR) */
   :where(.rt-SegmentedControlItem[data-state='on']:nth-child(1)) ~ & {
     transform: translateX(0%);
   }
@@ -230,6 +267,98 @@
   :where(.rt-SegmentedControlItem[data-state='on']:nth-child(10)) ~ & {
     transform: translateX(900%);
   }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(11)) ~ & {
+    transform: translateX(1000%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(12)) ~ & {
+    transform: translateX(1100%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(13)) ~ & {
+    transform: translateX(1200%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(14)) ~ & {
+    transform: translateX(1300%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(15)) ~ & {
+    transform: translateX(1400%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(16)) ~ & {
+    transform: translateX(1500%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(17)) ~ & {
+    transform: translateX(1600%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(18)) ~ & {
+    transform: translateX(1700%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(19)) ~ & {
+    transform: translateX(1800%);
+  }
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(20)) ~ & {
+    transform: translateX(1900%);
+  }
+
+  /* RTL: items flow right-to-left, so the indicator moves from the inline-end
+     anchor towards the left */
+  :where([dir='rtl']) & {
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(2)) ~ & {
+      transform: translateX(-100%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(3)) ~ & {
+      transform: translateX(-200%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(4)) ~ & {
+      transform: translateX(-300%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(5)) ~ & {
+      transform: translateX(-400%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(6)) ~ & {
+      transform: translateX(-500%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(7)) ~ & {
+      transform: translateX(-600%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(8)) ~ & {
+      transform: translateX(-700%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(9)) ~ & {
+      transform: translateX(-800%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(10)) ~ & {
+      transform: translateX(-900%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(11)) ~ & {
+      transform: translateX(-1000%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(12)) ~ & {
+      transform: translateX(-1100%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(13)) ~ & {
+      transform: translateX(-1200%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(14)) ~ & {
+      transform: translateX(-1300%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(15)) ~ & {
+      transform: translateX(-1400%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(16)) ~ & {
+      transform: translateX(-1500%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(17)) ~ & {
+      transform: translateX(-1600%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(18)) ~ & {
+      transform: translateX(-1700%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(19)) ~ & {
+      transform: translateX(-1800%);
+    }
+    :where(.rt-SegmentedControlItem[data-state='on']:nth-child(20)) ~ & {
+      transform: translateX(-1900%);
+    }
+  }
 }
 
 /* * * * * * * * * * * * * * * * * * * */
@@ -258,6 +387,16 @@
         padding-right: var(--space-3);
         gap: var(--space-1);
       }
+
+      &:where([aria-orientation='vertical']) {
+        height: auto;
+        width: var(--space-5);
+
+        & :where(.rt-SegmentedControlItemLabel) {
+          padding-top: var(--space-3);
+          padding-bottom: var(--space-3);
+        }
+      }
     }
     &:where(.rt-r-size-2) {
       --segmented-control-border-radius: max(var(--radius-2), var(--radius-full));
@@ -269,6 +408,16 @@
         padding-left: var(--space-4);
         padding-right: var(--space-4);
         gap: var(--space-2);
+      }
+
+      &:where([aria-orientation='vertical']) {
+        height: auto;
+        width: var(--space-6);
+
+        & :where(.rt-SegmentedControlItemLabel) {
+          padding-top: var(--space-4);
+          padding-bottom: var(--space-4);
+        }
       }
     }
     &:where(.rt-r-size-3) {
@@ -282,8 +431,229 @@
         padding-right: var(--space-4);
         gap: var(--space-3);
       }
+
+      &:where([aria-orientation='vertical']) {
+        height: auto;
+        width: var(--space-7);
+
+        & :where(.rt-SegmentedControlItemLabel) {
+          padding-top: var(--space-4);
+          padding-bottom: var(--space-4);
+        }
+      }
     }
   }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Vertical orientation        */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-SegmentedControlRoot:where([aria-orientation='vertical']) {
+  grid-auto-flow: row;
+  grid-auto-rows: 1fr;
+  min-width: 0;
+}
+
+.rt-SegmentedControlRoot:where([aria-orientation='vertical']) :where(.rt-SegmentedControlItem) {
+  flex-direction: column;
+
+  &:where(:first-child) {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  &:where(:nth-last-child(2)) {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+}
+
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItemSeparator) {
+  width: auto;
+  height: 1px;
+  margin-top: -0.5px;
+  margin-bottom: -0.5px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.rt-SegmentedControlRoot:where([aria-orientation='vertical']) :where(.rt-SegmentedControlIndicator) {
+  width: 100%;
+
+  /* Height per item count */
+  &:where(:nth-child(2)) {
+    height: calc(100% / 1);
+  }
+  &:where(:nth-child(3)) {
+    height: calc(100% / 2);
+  }
+  &:where(:nth-child(4)) {
+    height: calc(100% / 3);
+  }
+  &:where(:nth-child(5)) {
+    height: calc(100% / 4);
+  }
+  &:where(:nth-child(6)) {
+    height: calc(100% / 5);
+  }
+  &:where(:nth-child(7)) {
+    height: calc(100% / 6);
+  }
+  &:where(:nth-child(8)) {
+    height: calc(100% / 7);
+  }
+  &:where(:nth-child(9)) {
+    height: calc(100% / 8);
+  }
+  &:where(:nth-child(10)) {
+    height: calc(100% / 9);
+  }
+  &:where(:nth-child(11)) {
+    height: calc(100% / 10);
+  }
+  &:where(:nth-child(12)) {
+    height: calc(100% / 11);
+  }
+  &:where(:nth-child(13)) {
+    height: calc(100% / 12);
+  }
+  &:where(:nth-child(14)) {
+    height: calc(100% / 13);
+  }
+  &:where(:nth-child(15)) {
+    height: calc(100% / 14);
+  }
+  &:where(:nth-child(16)) {
+    height: calc(100% / 15);
+  }
+  &:where(:nth-child(17)) {
+    height: calc(100% / 16);
+  }
+  &:where(:nth-child(18)) {
+    height: calc(100% / 17);
+  }
+  &:where(:nth-child(19)) {
+    height: calc(100% / 18);
+  }
+  &:where(:nth-child(20)) {
+    height: calc(100% / 19);
+  }
+  &:where(:nth-child(21)) {
+    height: calc(100% / 20);
+  }
+  &:where(:nth-child(n + 22)) {
+    height: calc(100% / var(--segmented-control-item-count, 1));
+  }
+}
+
+/* Transform per active item (flat selectors: the indicator is a sibling of the
+   items, nested under the vertical root) */
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(1))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(0%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(2))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(100%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(3))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(200%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(4))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(300%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(5))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(400%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(6))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(500%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(7))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(600%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(8))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(700%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(9))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(800%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(10))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(900%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(11))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1000%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(12))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1100%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(13))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1200%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(14))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1300%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(15))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1400%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(16))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1500%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(17))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1600%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(18))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1700%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(19))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1800%);
+}
+.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
+  :where(.rt-SegmentedControlItem[data-state='on']:nth-child(20))
+  ~ :where(.rt-SegmentedControlIndicator) {
+  transform: translateY(1900%);
 }
 
 /* * * * * * * * * * * * * * * * * * * */
