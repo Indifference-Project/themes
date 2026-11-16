@@ -394,6 +394,23 @@ const layoutPropDefs = {
     values: justifySelfValues,
     responsive: true,
   },
+  /**
+   * Sets the CSS **order** property for flex and grid children.
+   * Supports integers and responsive objects.
+   *
+   * @example
+   * order="1"
+   * order={{ sm: '-1', lg: '2' }}
+   *
+   * @link
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/order
+   */
+  order: {
+    type: 'string',
+    className: 'rt-r-order',
+    customProperties: ['--order'],
+    responsive: true,
+  },
 } satisfies {
   position: PropDef<(typeof positionValues)[number]>;
   inset: PropDef<(typeof positionEdgeValues)[number]>;
@@ -416,6 +433,7 @@ const layoutPropDefs = {
   gridArea: PropDef<string>;
   alignSelf: PropDef<(typeof alignSelfValues)[number]>;
   justifySelf: PropDef<(typeof justifySelfValues)[number]>;
+  order: PropDef<string>;
 };
 
 // Use all of the imported prop defs to ensure that JSDoc works

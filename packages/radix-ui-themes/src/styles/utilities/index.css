@@ -1,5 +1,7 @@
 @import './layout.css';
 
+@import './order.css';
+
 @import './font-weight.css';
 @import './leading-trim.css';
 @import './resize.css';
