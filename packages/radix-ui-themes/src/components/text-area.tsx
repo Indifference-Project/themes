@@ -11,8 +11,9 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 
 type TextAreaElement = React.ElementRef<'textarea'>;
 type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs> & {
-  defaultValue?: string;
-  value?: string;
+  // Match the native textarea prop types
+  defaultValue?: string | number | readonly string[];
+  value?: string | number | readonly string[];
 };
 interface TextAreaProps
   extends
