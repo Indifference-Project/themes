@@ -31,6 +31,12 @@
   min-width: 0px;
 }
 
+.rt-DataListSeparator {
+  height: 1px;
+  background-color: var(--gray-a6);
+  margin-block: var(--space-2);
+}
+
 /***************************************************************************************************
  *                                                                                                 *
  * ORIENTATION                                                                                     *
@@ -120,6 +126,11 @@
     &:where(.rt-r-orientation-horizontal) {
       display: grid;
       grid-template-columns: auto 1fr;
+
+      & :where(.rt-DataListSeparator) {
+        /* Span the full row across the label and value columns */
+        grid-column: 1 / -1;
+      }
 
       & :where(.rt-DataListItem) {
         /* Allow the value to poke out of the row when orientation is horizontal */

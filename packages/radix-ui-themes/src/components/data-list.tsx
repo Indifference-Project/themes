@@ -82,15 +82,32 @@ const DataListValue = React.forwardRef<DataListValueElement, DataListValueProps>
 );
 DataListValue.displayName = 'DataList.Value';
 
+type DataListSeparatorElement = React.ElementRef<'div'>;
+interface DataListSeparatorProps extends ComponentPropsWithout<'div', RemovedProps> {}
+const DataListSeparator = React.forwardRef<DataListSeparatorElement, DataListSeparatorProps>(
+  ({ className, ...props }, forwardedRef) => (
+    <div
+      role="separator"
+      aria-orientation="horizontal"
+      {...props}
+      ref={forwardedRef}
+      className={classNames('rt-DataListSeparator', className)}
+    />
+  ),
+);
+DataListSeparator.displayName = 'DataList.Separator';
+
 export {
   DataListRoot as Root,
   DataListItem as Item,
   DataListLabel as Label,
   DataListValue as Value,
+  DataListSeparator as Separator,
 };
 export type {
   DataListRootProps as RootProps,
   DataListItemProps as ItemProps,
   DataListLabelProps as LabelProps,
   DataListValueProps as ValueProps,
+  DataListSeparatorProps as SeparatorProps,
 };
