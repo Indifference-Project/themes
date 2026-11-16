@@ -14,4 +14,12 @@
   .rt-r-jc-space-between {
     justify-content: space-between;
   }
+
+  .rt-r-jc-space-around {
+    justify-content: space-around;
+  }
+
+  .rt-r-jc-space-evenly {
+    justify-content: space-evenly;
+  }
 }
