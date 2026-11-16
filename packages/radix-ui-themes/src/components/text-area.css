@@ -17,6 +17,14 @@
   }
 }
 
+/* Auto-resize: the textarea grows with its content where `field-sizing` is
+   supported; the root's min-height keeps the initial size. Unsupported
+   browsers keep the fixed height. */
+.rt-TextAreaRoot:where(.rt-auto-resize) :where(.rt-TextAreaInput) {
+  field-sizing: content;
+  min-height: 100%;
+}
+
 .rt-TextAreaInput {
   border-radius: inherit;
   resize: none;

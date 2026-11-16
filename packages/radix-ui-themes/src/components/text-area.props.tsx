@@ -12,12 +12,14 @@ const textAreaPropDefs = {
   size: { type: 'enum', className: 'rt-r-size', values: sizes, default: '2', responsive: true },
   variant: { type: 'enum', className: 'rt-variant', values: variants, default: 'surface' },
   resize: { type: 'enum', className: 'rt-r-resize', values: resizeValues,  responsive: true },
+  autoResize: { type: 'boolean', className: 'rt-auto-resize', default: false },
   ...colorPropDef,
   ...radiusPropDef,
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
   resize: PropDef<(typeof resizeValues)[number]>;
+  autoResize: PropDef<boolean>;
     };
 
 export { textAreaPropDefs };
