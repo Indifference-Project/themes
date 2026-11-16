@@ -6,6 +6,13 @@
   text-align: left;
   color: var(--accent-a11);
 
+  /* Darken the low-contrast text color slightly so that Callout text meets
+     WCAG AA (4.5:1) on the tinted soft/surface backgrounds for every accent
+     color in light mode. Unsupported browsers fall back to --accent-a11. */
+  @supports (color: color-mix(in oklab, red, blue)) {
+    color: color-mix(in oklab, var(--accent-a11), var(--accent-12) 20%);
+  }
+
   &:where(.rt-high-contrast) {
     color: var(--accent-12);
   }
