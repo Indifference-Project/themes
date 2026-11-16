@@ -18,7 +18,7 @@ const themePropDefs = {
    */
   hasBackground: { type: 'boolean', default: true },
   /**
-   * Sets the color scheme of the theme, typcially referred to as light and dark mode.
+   * Sets the color scheme of the theme, typically referred to as light and dark mode.
    *
    * @link
    * https://www.radix-ui.com/themes/docs/theme/dark-mode
