@@ -37,10 +37,12 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
       ...rootProps
     } = extractProps(props, segmentedControlRootPropDefs, marginPropDefs);
 
+    // radix-ui 1.8's useControllableState requires an explicit defaultProp;
+    // an empty string means "no selection" for single toggle groups
     const [value, setValue] = useControllableState({
       prop: valueProp,
       onChange: onValueChangeProp,
-      defaultProp: defaultValueProp,
+      defaultProp: defaultValueProp ?? '',
     });
 
     // The indicator's width styles are generated per item count in CSS; this

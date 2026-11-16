@@ -39,9 +39,11 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
     ...checkboxProps
   } = extractProps(props, checkboxPropDefs, marginPropDefs);
 
+  // radix-ui 1.8's useControllableState requires an explicit defaultProp;
+  // false = unchecked for uncontrolled usage
   const [checked, setChecked] = useControllableState({
     prop: checkedProp,
-    defaultProp: defaultCheckedProp,
+    defaultProp: defaultCheckedProp ?? false,
     onChange: onCheckedChange,
   });
 
