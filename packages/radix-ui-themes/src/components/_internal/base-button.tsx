@@ -32,6 +32,26 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
     ...baseButtonProps
   } = extractProps(props, baseButtonPropDefs, marginPropDefs);
   const Comp = asChild ? Slot.Root : 'button';
+  // When `disabled` is slotted onto a non-button element (e.g. `asChild` with an `<a>`),
+  // the `disabled` attribute has no effect. Use `aria-disabled` and block interaction
+  // events instead so that the element is actually disabled.
+  const disabledInteractionProps =
+    disabled && asChild
+      ? ({
+          'aria-disabled': true,
+          onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
+            event.preventDefault();
+            event.stopPropagation();
+          },
+          onKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => {
+            // Prevent keyboard activation (e.g. Enter on a slotted link)
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          },
+        }) as Partial<React.ComponentPropsWithoutRef<'button'>>
+      : undefined;
   let child = children;
   if (props.loading) {
     // Loading buttons will wrap the contents of the button for hiding them
@@ -58,8 +78,12 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       data-accent-color={color}
       data-radius={radius}
       {...baseButtonProps}
+      {...disabledInteractionProps}
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseButton', className)}
+      // Passed through so slotted native `<button>` children are natively disabled as well.
+      // For non-button slotted elements the attribute is inert; `aria-disabled` and the
+      // interaction-blocking props above handle those instead.
       disabled={disabled}
     >
       {child}
