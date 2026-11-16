@@ -28,7 +28,10 @@
 }
 
 .rt-TooltipText {
-  color: var(--gray-1);
+  /* The content is wrapped in an element with the inverted `light`/`dark` class
+     so that accent colors resolve against the opposite appearance; `gray-12` in
+     that scope is the complement of the panel's `gray-12` background */
+  color: var(--gray-12);
   user-select: none;
   cursor: default;
 }

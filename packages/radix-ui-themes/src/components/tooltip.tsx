@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Tooltip as TooltipPrimitive } from 'radix-ui';
 
 import { Text } from './text.js';
-import { Theme } from './theme.js';
+import { Theme, ThemeContext } from './theme.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { tooltipPropDefs } from './tooltip.props.js';
 
@@ -39,6 +39,26 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
   } = extractProps(props, tooltipPropDefs);
   const rootProps = { open, defaultOpen, onOpenChange, delayDuration, disableHoverableContent };
 
+  // The tooltip renders on an inverted panel (gray-12 background), so accent
+  // colors inside the content need to resolve against the opposite appearance
+  // to stay readable (#418, #440, #476). Tooltip content only renders after
+  // user interaction on the client, so reading the root class for inherited
+  // appearances is safe.
+  const themeContext = React.useContext(ThemeContext);
+  const currentAppearance = themeContext?.appearance ?? 'inherit';
+  const invertedAppearance =
+    currentAppearance === 'inherit'
+      ? typeof document !== 'undefined' &&
+        (document.documentElement.classList.contains('dark') ||
+          document.documentElement.classList.contains('dark-theme') ||
+          document.body.classList.contains('dark') ||
+          document.body.classList.contains('dark-theme'))
+        ? 'dark'
+        : 'light'
+      : currentAppearance === 'dark'
+        ? 'light'
+        : 'dark';
+
   // Render only the child so that the tooltip is fully suppressed
   if (disabled) return <>{children}</>;
 
@@ -55,9 +75,13 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
             ref={forwardedRef}
             className={classNames('rt-TooltipContent', className)}
           >
-            <Text as="p" className="rt-TooltipText" size="1">
-              {content}
-            </Text>
+            {/* `display: contents` keeps the wrapper out of the layout while the
+                inverted `light`/`dark` class re-scopes the CSS variables */}
+            <span className={invertedAppearance} style={{ display: 'contents' }}>
+              <Text as="p" className="rt-TooltipText" size="1">
+                {content}
+              </Text>
+            </span>
             <TooltipPrimitive.Arrow className="rt-TooltipArrow" />
           </TooltipPrimitive.Content>
         </Theme>
