@@ -86,10 +86,7 @@ interface SegmentedControlItemOwnProps {
 
 interface SegmentedControlItemProps
   extends
-    ComponentPropsWithout<
-      typeof ToggleGroupPrimitive.Item,
-      RemovedProps | 'disabled' | 'type' | 'value'
-    >,
+    ComponentPropsWithout<typeof ToggleGroupPrimitive.Item, RemovedProps | 'type' | 'value'>,
     SegmentedControlItemOwnProps {}
 
 const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedControlItemProps>(
@@ -98,7 +95,6 @@ const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedContro
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-SegmentedControlItem', className)}
       {...props}
-      disabled={false}
       asChild={false}
     >
       <span className="rt-SegmentedControlItemSeparator" />

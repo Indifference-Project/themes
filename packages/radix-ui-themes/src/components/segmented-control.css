@@ -45,6 +45,10 @@
     outline: 2px solid var(--focus-8);
     outline-offset: -1px;
   }
+  &:where([disabled]) {
+    cursor: var(--cursor-disabled);
+    color: var(--gray-a8);
+  }
 }
 
 .rt-SegmentedControlItemLabel {
