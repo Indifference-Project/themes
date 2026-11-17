@@ -254,3 +254,42 @@
     box-sizing: border-box;
   }
 }
+
+/***************************************************************************************************
+ *                                                                                                 *
+ *      Modern defaults: thin scrollbars, accent text selection                                                    *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* Thin, theme-aware scrollbars on the page and scrollable theme surfaces.
+   Only WebKit needs explicit styling; Firefox picks up `scrollbar-width`. */
+:where(.radix-themes),
+:where(.radix-themes) :where(*) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-a6) transparent;
+}
+@supports selector(::-webkit-scrollbar) {
+  :where(.radix-themes) ::-webkit-scrollbar,
+  :where(.radix-themes)::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  :where(.radix-themes) ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  :where(.radix-themes) ::-webkit-scrollbar-thumb {
+    background-color: var(--gray-a6);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  :where(.radix-themes) ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--gray-a8);
+  }
+}
+
+/* Accent-tinted text selection */
+:where(.radix-themes) ::selection {
+  background-color: var(--accent-a5);
+  color: var(--gray-12);
+}
