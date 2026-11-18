@@ -10,9 +10,17 @@
 
 For full documentation, visit [radix-ui.com/themes/docs](https://radix-ui.com/themes/docs).
 
-## Releases
+## Latest release
 
-[Releases of this fork](https://github.com/yuchen0x1/themes/releases) · [Upstream GitHub releases](https://github.com/radix-ui/themes/releases)
+<!-- github-release:start -->
+
+No published stable release.
+
+[Release history](https://github.com/yuchen0x1/themes/releases)
+
+<!-- github-release:end -->
+
+[Upstream GitHub releases](https://github.com/radix-ui/themes/releases)
 
 For the upstream changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/themes/docs/overview/releases).
 
