@@ -12,7 +12,9 @@ For full documentation, visit [radix-ui.com/themes/docs](https://radix-ui.com/th
 
 ## Releases
 
-For changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/themes/docs/overview/releases).
+[Releases of this fork](https://github.com/yuchen0x1/themes/releases) · [Upstream GitHub releases](https://github.com/radix-ui/themes/releases)
+
+For the upstream changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/themes/docs/overview/releases).
 
 ## Authors
 
