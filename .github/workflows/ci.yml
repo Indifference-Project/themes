@@ -65,17 +65,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Playwright 1.59 does not support Ubuntu 26.04 yet.
         os: [ubuntu-24.04, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-24.04
+            # Match the Playwright version in the lockfile. The image includes Linux browser deps.
+            image: mcr.microsoft.com/playwright:v1.59.1-noble@sha256:b0ab6f3cb99aa7803adbc14d9027ec1785fc6e433b97e134e0f8fe61683b6b53
+    container: ${{ matrix.image }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
       - uses: ./.github/actions/ci-setup
       - run: pnpm build:pkg
-      - name: Install Playwright browsers on Linux
-        if: runner.os == 'Linux'
-        run: pnpm --filter playground exec playwright install --with-deps
       - name: Install Playwright browsers on Windows and macOS
         if: runner.os != 'Linux'
         run: pnpm --filter playground exec playwright install
