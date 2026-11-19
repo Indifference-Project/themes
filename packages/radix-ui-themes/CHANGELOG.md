@@ -2,6 +2,8 @@
 
 ## 3.4.0
 
+- Fix `Popover.Trigger` (and other `asChild` triggers) failing to open when the trigger `Avatar` has no `src` and renders only its fallback. Injected interaction props now stay on the persistent root element ([#605](https://github.com/radix-ui/themes/issues/605)).
+- Fix right-aligned and RTL `TextField` values sitting flush against the border by insetting the inline-end edge ([#435](https://github.com/radix-ui/themes/issues/435)).
 - Fix `ScrollArea` ignoring arbitrary margin values (for example `m="100px"`). It now uses the same custom properties as every other component, so responsive margin values also apply per breakpoint.
 - Fix the `sm` breakpoint of the `mx` margin utility reading the `md` custom properties, which dropped the `sm` value and reset the margin to zero.
 - Stop mutating the responsive prop objects passed to components. Frozen objects no longer throw and shared objects are no longer modified.

@@ -154,31 +154,35 @@
   /* Clip text to the border radius of the Root */
   border-radius: calc(var(--text-field-border-radius) - var(--text-field-border-width));
 
-  /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
+  /* Equivalent to padding-inline-start, but doesn't cut off long values when
+     the cursor is at the end. */
   text-indent: var(--text-field-padding);
+
+  /* `text-indent` only insets the inline-start edge. Right-aligned values and
+     RTL fields need an inset on the inline-end edge too, otherwise the text
+     sits flush against the border (radix-ui/themes#435). */
+  padding-inline-end: var(--text-field-padding);
 
   &:where([type='date'], [type='datetime-local'], [type='time'], [type='week'], [type='month']) {
     /* Safari is buggy with text-indent for these input types */
     text-indent: 0;
-    padding-left: var(--text-field-padding);
-    padding-right: var(--text-field-padding);
+    padding-inline-start: var(--text-field-padding);
   }
 
-  /* Remove border-radius and text-indent/padding on the left if there’s a left-side slot */
+  /* Remove border-radius and the inline-start inset if there’s a left-side slot */
   &:where(:has(~ .rt-TextFieldSlot:not([data-side='right']))) {
     text-indent: 0;
-    padding-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  /* Remove border-radius and padding on the right if there’s a right-side slot */
+  /* Remove border-radius and padding on the end if there’s a right-side slot */
   /* prettier-ignore */
   &:where(:has(
     ~ .rt-TextFieldSlot[data-side='right'],
     ~ .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left'])
   )) {
-    padding-right: 0;
+    padding-inline-end: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
