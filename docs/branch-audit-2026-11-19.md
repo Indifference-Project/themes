@@ -25,6 +25,6 @@ After recording the inventory, the two superseded Dependabot pull requests were 
 
 ## Protection and follow-up
 
-The available local Git and GitHub operations did not provide a verified branch-protection configuration readout. No protection setting was claimed or changed. A maintainer must verify or configure required checks, code-owner review, linear-history policy, force-push restrictions, and deletion restrictions in GitHub repository settings.
+GitHub classic branch protection for `main` was then created and verified in the repository settings. It requires pull requests, one approval, dismissal of stale approvals after new pushes, resolved conversations, and linear history; force-push and branch deletion remain disabled, and administrators cannot bypass the rule. Required status checks were not enabled because GitHub exposed no recent check contexts while the rule was created; once the CI check names are available, a maintainer should add the required `CI / Required checks` context. Code-owner approval was intentionally left off to avoid making a single-owner repository impossible to merge until another reviewer is available.
 
 The scheduled [branch governance workflow](../.github/workflows/branch-governance.yml) and [scanner](../scripts/branch-governance.mjs) now produce an advisory report. They never merge, force-push, close pull requests, or delete branches automatically.
