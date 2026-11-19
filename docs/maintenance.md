@@ -1,5 +1,7 @@
 # 维护与平台状态
 
+> **归档状态（2026-11-19）：** 本仓库已进入归档就绪状态。上游 issue 栏的全量分诊与本次实际修复见 [upstream-issue-triage-2026-11-19.md](./upstream-issue-triage-2026-11-19.md)。归档后不再接受新功能；仅保留只读快照、既有 Release 资产与下述验证结论。所有分支均已合并或清理，`main` 保持受保护。
+
 ## 原始基线
 
 审计起点为分叉的 `main` 提交 `3720860`。当前工作树中的包版本是 3.4.0，包内变更日志已记录对应条目；本次工作区包含尚未提交的发布基础设施改动。分叉的 GitHub 仓库远程地址为 `yuchen0x1/themes`，默认分支与分支保护、Secrets、Variables、Releases、Actions 设置需在 GitHub Settings/API 中复核，不能仅凭本地文件确认。上游 npm 包与分叉的 GitHub 分发各自独立。
