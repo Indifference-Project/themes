@@ -2,6 +2,9 @@
 
 ## 3.4.0
 
+- Update build and lint toolchain dependencies to versions with fixes for known security advisories.
+- Restore release checks on clean Next.js checkouts and supported Linux runners, and update the macOS visual baseline for the corrected Inset clipping.
+
 - Fix `Popover.Trigger` (and other `asChild` triggers) failing to open when the trigger `Avatar` has no `src` and renders only its fallback. Injected interaction props now stay on the persistent root element ([#605](https://github.com/radix-ui/themes/issues/605)).
 - Fix right-aligned and RTL `TextField` values sitting flush against the border by insetting the inline-end edge ([#435](https://github.com/radix-ui/themes/issues/435)).
 - Fix `ScrollArea` ignoring arbitrary margin values (for example `m="100px"`). It now uses the same custom properties as every other component, so responsive margin values also apply per breakpoint.

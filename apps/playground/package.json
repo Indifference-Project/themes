@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "clean": "rm -rf node_modules .next .turbo playwright-report test-results",
-    "lint": "eslint && tsc --noEmit",
+    "lint": "eslint && next typegen && tsc --noEmit",
     "test:vr": "playwright test",
     "test:vr:ui": "playwright test --ui",
     "test:vr:update": "playwright test --update-snapshots"
