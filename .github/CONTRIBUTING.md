@@ -4,7 +4,7 @@
 
 Radix has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it.
 
-Please read [the full text](/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+Please read [the full text](../CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
 
 ## Heuristics
 
@@ -55,40 +55,40 @@ cd themes
 git remote add upstream https://github.com/radix-ui/themes.git
 ```
 
-1. Synchronize your local `main` branch with the upstream remote:
+3. Synchronize your local `main` branch with the upstream remote:
 
 ```sh
 git checkout main
 git pull upstream main
 ```
 
-1. Make sure your Node version matches the [.nvmrc](../.nvmrc).
+4. Make sure your Node version matches the [.nvmrc](../.nvmrc).
 
 ```
 node -v
 ```
 
-1. Install dependencies with [pnpm](https://pnpm.io):
+5. Install dependencies with [pnpm](https://pnpm.io):
 
 ```sh
 pnpm install
 ```
 
-1. Create a new branch related to your PR:
+6. Create a new branch related to your PR:
 
 ```sh
 git checkout -b my-bug-fix
 ```
 
-6. Make changes, then commit and push to your forked repository:
+7. Make changes, then commit and push to your forked repository:
 
 ```sh
 git push -u origin HEAD
 ```
 
-7. Go to [the repository](https://github.com/radix-ui/themes/pulls) and [make a Pull Request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+8. Go to [the fork repository](https://github.com/yuchen0x1/themes/pulls) and [make a Pull Request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-github-issues-and-pull-requests/creating-a-pull-request).
 
-8. We will review your Pull Request and either merge it, request changes to it, or close it with an explanation.
+9. We will review your Pull Request and either merge it, request changes from you, or close it with an explanation.
 
 ## Working locally
 
@@ -104,7 +104,7 @@ pnpm install
 pnpm dev
 ```
 
-After staring the development server, navigate to `http://localhost:3000/sink` to view the playground. Visit other demos by navigating to pages in the app directory (./app/\*), such as `/demo`, `/explore-components`, `/home-os`.
+After starting the development server, navigate to `http://localhost:3000/sink` to view the playground. Visit other demos by navigating to pages in `apps/playground/app/(themeable)`, such as `/demo`, `/sink`, or `/test/*`.
 
 Make your changes and check that they resolve the problem with an example in `/sink` or another demo page. If there are no examples in the playground to support your change, we suggest adding one and then running local development to make sure nothing is broken.
 

@@ -1,0 +1,44 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      radix-primitives:
+        patterns:
+          - 'radix-ui'
+          - '@radix-ui/*'
+      next:
+        patterns:
+          - next
+          - eslint-config-next
+  - package-ecosystem: npm
+    directory: /apps/playground
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      playground-tooling:
+        patterns:
+          - '@playwright/*'
+          - '@axe-core/*'
+          - eslint*
+          - typescript
+  - package-ecosystem: npm
+    directory: /packages/radix-ui-themes
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      themes-runtime:
+        patterns:
+          - '@radix-ui/*'
+          - radix-ui
+          - react-remove-scroll-bar
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5

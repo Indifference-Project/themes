@@ -36,12 +36,8 @@
     &:where(.rt-r-clip-border-box) {
       --inset-border-radius-calc: var(--inset-border-radius, 0px);
       --inset-padding-top-calc: calc(var(--inset-padding-top, 0px) + var(--inset-border-width, 0px));
-      --inset-padding-right-calc: calc(
-        var(--inset-padding-right, 0px) + var(--inset-border-width, 0px)
-      );
-      --inset-padding-bottom-calc: calc(
-        var(--inset-padding-bottom, 0px) + var(--inset-border-width, 0px)
-      );
+      --inset-padding-right-calc: calc(var(--inset-padding-right, 0px) + var(--inset-border-width, 0px));
+      --inset-padding-bottom-calc: calc(var(--inset-padding-bottom, 0px) + var(--inset-border-width, 0px));
       --inset-padding-left-calc: calc(var(--inset-padding-left, 0px) + var(--inset-border-width, 0px));
     }
     /* padding-box: stop at the inner edge of the drawn border — radius reduced

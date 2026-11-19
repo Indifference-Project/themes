@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a component, browser compatibility, or package installation problem.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Themes and React versions
+      placeholder: 'Themes 3.4.0, React 19.2.5'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, operating system, and bundler or package manager
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction and expected behavior
+      description: Include a minimal example and any relevant keyboard or assistive technology steps.
+    validations:
+      required: true

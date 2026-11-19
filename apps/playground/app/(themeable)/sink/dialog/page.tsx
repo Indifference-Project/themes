@@ -11,7 +11,7 @@ export default function DialogPage() {
           <Dialog.Trigger>
             <Button variant="solid">Open</Button>
           </Dialog.Trigger>
-          <Dialog.Content asChild maxWidth="450px">
+          <Dialog.Content maxWidth="450px">
             <Flex direction="column" gap="3">
               <InfoCircledIcon style={{ position: 'absolute', top: '24px', right: '20px' }} />
               <Dialog.Title>Share resource</Dialog.Title>

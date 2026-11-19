@@ -109,5 +109,11 @@ const ThickChevronRightIcon = React.forwardRef<IconElement, IconProps>((props, f
 });
 ThickChevronRightIcon.displayName = 'ThickChevronRightIcon';
 
-export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickCrossIcon, ThickDividerHorizontalIcon };
+export {
+  ChevronDownIcon,
+  ThickCheckIcon,
+  ThickChevronRightIcon,
+  ThickCrossIcon,
+  ThickDividerHorizontalIcon,
+};
 export type { IconProps };

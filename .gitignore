@@ -7,9 +7,13 @@ dist
 dist-ssr
 *.local
 .env
+.env.*
+!.env.example
 .cache
 server/dist
 public/dist
 packages/radix-ui-themes/*.css
 packages/radix-ui-themes/tokens
 packages/radix-ui-themes/layout
+apps/playground/playwright-report/
+apps/playground/test-results/

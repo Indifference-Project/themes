@@ -478,8 +478,7 @@
   }
 }
 
-.rt-SegmentedControlRoot:where([aria-orientation='vertical'])
-  :where(.rt-SegmentedControlItemSeparator) {
+.rt-SegmentedControlRoot:where([aria-orientation='vertical']) :where(.rt-SegmentedControlItemSeparator) {
   width: auto;
   height: 1px;
   margin-top: -0.5px;
