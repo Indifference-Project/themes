@@ -2,6 +2,16 @@
 
 ## 3.4.0
 
+- Fix `Popover.Trigger` (and other `asChild` triggers) failing to open when the trigger `Avatar` has no `src` and renders only its fallback. Injected interaction props now stay on the persistent root element ([#605](https://github.com/radix-ui/themes/issues/605)).
+- Fix right-aligned and RTL `TextField` values sitting flush against the border by insetting the inline-end edge ([#435](https://github.com/radix-ui/themes/issues/435)).
+- Fix `ScrollArea` ignoring arbitrary margin values (for example `m="100px"`). It now uses the same custom properties as every other component, so responsive margin values also apply per breakpoint.
+- Fix the `sm` breakpoint of the `mx` margin utility reading the `md` custom properties, which dropped the `sm` value and reset the margin to zero.
+- Stop mutating the responsive prop objects passed to components. Frozen objects no longer throw and shared objects are no longer modified.
+- Keep the `classic` variant's border and drop shadow when a `TextField` is invalid; the red ring is now layered on top of them instead of replacing them.
+- Fix `ThemePanel`'s "Copy Theme" button throwing and getting stuck when the Clipboard API is unavailable (for example on a non-secure origin).
+- Fix the `DropdownMenu` checkbox item and submenu trigger emitting the wrong component-specific class names.
+- Use longhand offsets for the `ThemePanel` swatch inputs so they keep working on browsers without `inset` support.
+- Fix the release smoke test so the published tarball is verified against every supported React version (16.14, 17.0, 18.3 and 19.2).
 - Preserve custom dialog content elements when using `Dialog.Content asChild`, including with the built-in close button. Use `closeButtonLabel` to give the button a localized accessible name.
 - Improve Select placeholder and item text contrast in dark themes to satisfy WCAG AA.
 - Apply themed scrollbars and accent-colored text selection in supported browsers.

@@ -115,7 +115,7 @@ export function ContextMenuContentDemo(props: React.ComponentProps<typeof Contex
             <ContextMenu.RadioItem value="colm">Colm Tuite</ContextMenu.RadioItem>
           </ContextMenu.RadioGroup>
 
-          <DropdownMenu.Separator />
+          <ContextMenu.Separator />
 
           <ContextMenu.Item color="red">Delete</ContextMenu.Item>
         </>

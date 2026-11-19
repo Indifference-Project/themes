@@ -28,3 +28,9 @@ After recording the inventory, the two superseded Dependabot pull requests were 
 GitHub classic branch protection for `main` was then created and verified in the repository settings. It requires pull requests, one approval, dismissal of stale approvals after new pushes, resolved conversations, and linear history; force-push and branch deletion remain disabled, and administrators cannot bypass the rule. Required status checks were not enabled because GitHub exposed no recent check contexts while the rule was created; once the CI check names are available, a maintainer should add the required `CI / Required checks` context. Code-owner approval was intentionally left off to avoid making a single-owner repository impossible to merge until another reviewer is available.
 
 The scheduled [branch governance workflow](../.github/workflows/branch-governance.yml) and [scanner](../scripts/branch-governance.mjs) now produce an advisory report. They never merge, force-push, close pull requests, or delete branches automatically.
+
+## Archive-ready cleanup (same day)
+
+After PR #3 (`codex/web-release-foundation`) was merged into `main`, the remote `main` advanced to `7c19225`. A fresh `git fetch --prune` confirmed that `codex/web-release-foundation` is fully contained in `origin/main` (`git merge-base --is-ancestor` succeeded) and no pull requests remain open. The stale local topic branch `codex/web-release-foundation` was therefore removed with a safe `git branch -d` (no force-delete). No remote branch was deleted and `main` was not rewritten.
+
+All archive-readiness work — the code fixes, regression tests, changelog, and documentation — lives on the single `chore/archive-readiness` branch as two commits ahead of the original `main` baseline. No divergent or unmerged branches remain.
