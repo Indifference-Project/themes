@@ -101,7 +101,7 @@
   height: var(--select-item-height);
   padding-left: var(--select-item-indicator-width);
   padding-right: var(--select-item-indicator-width);
-  color: var(--gray-a10);
+  color: var(--gray-a11);
   user-select: none;
   cursor: default;
 
@@ -313,7 +313,7 @@
   }
   &:where([data-placeholder]) {
     & :where(.rt-SelectTriggerInner) {
-      color: var(--gray-a10);
+      color: var(--gray-a11);
     }
   }
 }
@@ -397,7 +397,7 @@
   }
   &:where([data-placeholder]) {
     & :where(.rt-SelectTriggerInner) {
-      color: var(--gray-a10);
+      color: var(--gray-a11);
     }
   }
 }

@@ -101,12 +101,12 @@
   }
   /* `white-space: pre-wrap` misaligns date/time inputs in Firefox (#527) */
   &:where(
-      input[type='date'],
-      input[type='datetime-local'],
-      input[type='month'],
-      input[type='time'],
-      input[type='week']
-    ) {
+    input[type='date'],
+    input[type='datetime-local'],
+    input[type='month'],
+    input[type='time'],
+    input[type='week']
+  ) {
     white-space: unset;
   }
   &:where(:focus) {

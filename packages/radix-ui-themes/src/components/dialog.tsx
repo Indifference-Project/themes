@@ -5,6 +5,7 @@ import { Dialog as DialogPrimitive } from 'radix-ui';
 import { dialogContentPropDefs } from './dialog.props.js';
 import { Heading } from './heading.js';
 import { IconButton } from './icon-button.js';
+import { Slottable, Slot } from './slot.js';
 import { Text } from './text.js';
 import { Theme } from './theme.js';
 import { ThickCrossIcon } from './icons.js';
@@ -37,6 +38,20 @@ const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>
 DialogTrigger.displayName = 'Dialog.Trigger';
 
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
+type DialogContentSlotProps = React.ComponentPropsWithoutRef<typeof Slot> & { asChild?: boolean };
+const DialogContentSlot = React.forwardRef<DialogContentElement, DialogContentSlotProps>(
+  ({ asChild: _asChild, children, ...props }, forwardedRef) => {
+    const [child, ...siblings] = React.Children.toArray(children);
+    return (
+      <Slot {...props} ref={forwardedRef}>
+        <Slottable>{child}</Slottable>
+        {siblings}
+      </Slot>
+    );
+  },
+);
+DialogContentSlot.displayName = 'Dialog.ContentSlot';
+
 interface DialogContentProps
   extends
     ComponentPropsWithout<typeof DialogPrimitive.Content, RemovedProps>,
@@ -44,15 +59,22 @@ interface DialogContentProps
   container?: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>['container'];
   /** Render a close button in the top-right corner of the dialog */
   closeButton?: boolean;
+  /** Accessible name for the built-in close button. Defaults to "Close". */
+  closeButtonLabel?: string;
 }
 const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>(
   ({ align, ...props }, forwardedRef) => {
     const { align: alignPropDef, ...propDefs } = dialogContentPropDefs;
     const { className: alignClassName } = extractProps({ align }, { align: alignPropDef });
-    const { className, forceMount, container, closeButton, children, ...contentProps } = extractProps(
-      props,
-      propDefs,
-    );
+    const {
+      className,
+      forceMount,
+      container,
+      closeButton,
+      closeButtonLabel,
+      children,
+      ...contentProps
+    } = extractProps(props, propDefs);
     return (
       <DialogPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -66,14 +88,20 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
                   ref={forwardedRef}
                   className={classNames('rt-BaseDialogContent', 'rt-DialogContent', className)}
                 >
-                  {children}
+                  {contentProps.asChild ? (
+                    <Slottable>
+                      <DialogContentSlot>{children}</DialogContentSlot>
+                    </Slottable>
+                  ) : (
+                    children
+                  )}
                   {closeButton && (
                     <DialogPrimitive.Close asChild>
                       <IconButton
                         variant="ghost"
                         color="gray"
                         className="rt-DialogContentCloseButton"
-                        aria-label="Close"
+                        aria-label={closeButtonLabel?.trim() || 'Close'}
                       >
                         <ThickCrossIcon />
                       </IconButton>

@@ -71,10 +71,9 @@ type RadioGroupItemElement = React.ElementRef<typeof RadioGroupItemRadio>;
 // `checked` is stripped: the checked state of an item is derived from the root's
 // `value` prop, and forwarding `checked` to the underlying `<button>` breaks it
 interface RadioGroupItemProps
-  extends Omit<
-      ComponentPropsWithout<typeof RadioGroupItemRadio, RemovedProps>,
-      'checked'
-    >, MarginProps {}
+  extends
+    Omit<ComponentPropsWithout<typeof RadioGroupItemRadio, RemovedProps>, 'checked'>,
+    MarginProps {}
 const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemProps>(
   (_props: ScopedProps<RadioGroupItemProps>, forwardedRef) => {
     // `checked` is intentionally absent from the public props. Strip it here as
@@ -128,7 +127,11 @@ const RadioGroupItemRadio = React.forwardRef<
   RadioGroupItemRadioElement,
   ScopedProps<RadioGroupItemRadioProps>
 >((_props, forwardedRef) => {
-  const { __scopeRadioGroup, checked: _checked, ...props } = _props as typeof _props & {
+  const {
+    __scopeRadioGroup,
+    checked: _checked,
+    ...props
+  } = _props as typeof _props & {
     checked?: boolean;
   };
   const context = useRadioGroupContext('RadioGroupItemRadio', __scopeRadioGroup);

@@ -2,7 +2,17 @@ import { asChildPropDef } from '../props/as-child.prop.js';
 
 import type { PropDef, GetPropDefTypes } from '../props/prop-def.js';
 
-const as = ['div', 'span', 'article', 'aside', 'footer', 'header', 'main', 'nav', 'section'] as const;
+const as = [
+  'div',
+  'span',
+  'article',
+  'aside',
+  'footer',
+  'header',
+  'main',
+  'nav',
+  'section',
+] as const;
 const displayValues = ['none', 'inline', 'inline-block', 'block', 'contents'] as const;
 
 const boxPropDefs = {

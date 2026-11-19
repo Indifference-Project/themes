@@ -2,47 +2,62 @@
 
 # Radix Themes
 
-**An open-source component library optimized for fast development, easy maintenance, and accessibility.**
+An accessible React component library with pre-styled controls, responsive layout, CSS design tokens, and nested light and dark themes. This repository is a fork of [WorkOS Radix Themes](https://github.com/radix-ui/themes).
 
----
+[![CI](https://github.com/yuchen0x1/themes/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/yuchen0x1/themes/actions/workflows/ci.yml)
+[![Latest fork release](https://img.shields.io/github/v/release/yuchen0x1/themes)](https://github.com/yuchen0x1/themes/releases/latest)
 
-## Documentation
+## Install
 
-For full documentation, visit [radix-ui.com/themes/docs](https://radix-ui.com/themes/docs).
+For the upstream npm package, use `npm install @radix-ui/themes`. Fork builds are available in [GitHub Releases](https://github.com/yuchen0x1/themes/releases). Follow the [verification and installation steps](./release-process.md#install-verify-and-roll-back) before installing a fork build.
 
-## Latest release
+```tsx
+import '@radix-ui/themes/styles.css';
+import { Button, Theme } from '@radix-ui/themes';
 
-<!-- github-release:start -->
+export function App() {
+  return (
+    <Theme accentColor="indigo">
+      <Button>Get started</Button>
+    </Theme>
+  );
+}
+```
 
-No published stable release.
+Browse the [component docs](https://www.radix-ui.com/themes/docs/components), [theme settings](https://www.radix-ui.com/themes/docs/theme/overview), and [responsive breakpoints](https://www.radix-ui.com/themes/docs/theme/breakpoints) for usage examples.
 
-[Release history](https://github.com/yuchen0x1/themes/releases)
+## Latest update
 
-<!-- github-release:end -->
+See the [latest stable fork release](https://github.com/yuchen0x1/themes/releases/latest) for version notes and downloads, and the [package changelog](./packages/radix-ui-themes/CHANGELOG.md) for source history.
 
-[Upstream GitHub releases](https://github.com/radix-ui/themes/releases)
+## Compatibility
 
-For the upstream changelog, visit [radix-ui.com/themes/docs/overview/releases](https://radix-ui.com/themes/docs/overview/releases).
+| Target                    | Delivery                                                         | Verification                                                    |
+| ------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------- |
+| Desktop Web               | React library with shared CSS and keyboard interaction           | Playwright Chromium, Firefox, and WebKit                        |
+| Mobile and responsive Web | Same library with responsive props and browser touch interaction | Mobile Chrome and Safari profiles in Playwright                 |
+| Server-side rendering     | ESM and CommonJS entry points                                    | Tarball install and server render with React 16, 17, 18, and 19 |
 
-## Authors
+The Playground is a Next.js workspace for component demos and regression tests. The [compatibility and maintenance record](./docs/maintenance.md) describes the checks, platform decisions, and remaining device coverage.
 
-- Benoît Grélard ([@benoitgrelard](https://twitter.com/benoitgrelard))
-- Vlad Moroz ([@vladyslavmoroz](https://twitter.com/vladyslavmoroz))
-- Andy Hook ([@Andy_Hook](https://twitter.com/Andy_Hook))
-- Lucas Motta ([@elmotta](https://twitter.com/elmotta))
+## Run the playground
 
----
+Use Node.js 24 and the pnpm version declared in the root package manifest.
 
-## Community
+```sh
+pnpm install --frozen-lockfile
+pnpm build
+pnpm --filter playground start
+```
 
-See our [contribution guidelines](./.github/CONTRIBUTING.md) for information on local development and creating a pull request.
+Open [the component gallery](http://localhost:3000/sink) or [the demo](http://localhost:3000/demo). For dependency upgrades, use the [release process](./release-process.md) with your consuming app's lockfile and deployment pipeline.
 
-- [Github Discussions](https://github.com/radix-ui/themes/discussions) - Ask questions and get answers from other community members.
-- [Discord](https://discord.com/invite/7Xb99uG) - To get involved with the Radix community, ask questions and share tips.
-- [Twitter](https://twitter.com/radix_ui) - To receive updates, announcements, blog posts, and general Radix tips.
+## Contribute
+
+Read the [contribution guidelines](./.github/CONTRIBUTING.md), propose changes through [Issues](https://github.com/yuchen0x1/themes/issues), or use the [private security reporting process](./SECURITY.md). The [research and upgrade backlog](./docs/ecosystem-review.md) records the current priorities.
+
+See the [upstream changelog](https://www.radix-ui.com/themes/docs/overview/releases) and [upstream discussions](https://github.com/radix-ui/themes/discussions) for the original project.
 
 ## License
 
-Licensed under the MIT License, Copyright © 2023-present [WorkOS](https://workos.com).
-
-See [LICENSE](./LICENSE) for more information.
+[MIT](./LICENSE), copyright © 2023–present WorkOS. Radix Themes was created by Benoît Grélard, Vlad Moroz, Andy Hook, and Lucas Motta.

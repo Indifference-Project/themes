@@ -50,7 +50,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
               event.stopPropagation();
             }
           },
-        }) as Partial<React.ComponentPropsWithoutRef<'button'>>
+        } as Partial<React.ComponentPropsWithoutRef<'button'>>)
       : undefined;
   let child = children;
   if (props.loading) {

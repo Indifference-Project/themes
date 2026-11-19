@@ -1,0 +1,11 @@
+# Keep release, dependency, and security changes reviewed by the fork owner.
+* @yuchen0x1
+
+# High-impact infrastructure paths require explicit ownership review.
+/.github/ @yuchen0x1
+/SECURITY.md @yuchen0x1
+/LICENSE @yuchen0x1
+/pnpm-lock.yaml @yuchen0x1
+/packages/radix-ui-themes/package.json @yuchen0x1
+/packages/radix-ui-themes/CHANGELOG.md @yuchen0x1
+/scripts/ @yuchen0x1

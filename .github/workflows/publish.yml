@@ -4,12 +4,12 @@ on:
   release:
     types: [created]
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -21,15 +21,35 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: CI Setup
         uses: ./.github/actions/ci-setup
 
       - name: Setup npm registry
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Validate release tag and package version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version=$(node -p 'require("./packages/radix-ui-themes/package.json").version')
+          [[ "$RELEASE_TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
+          test "$RELEASE_TAG" = "v$version"
+          git merge-base --is-ancestor HEAD origin/main
+
+      - name: Reject an already published version
+        run: |
+          version=$(node -p 'require("./packages/radix-ui-themes/package.json").version')
+          if npm view "@radix-ui/themes@$version" version --registry=https://registry.npmjs.org/ >/dev/null 2>&1; then
+            echo "@radix-ui/themes@$version is already published"
+            exit 1
+          fi
 
       - name: Lint
         run: pnpm --filter "@radix-ui/*" lint

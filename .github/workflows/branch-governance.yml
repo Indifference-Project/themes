@@ -1,0 +1,40 @@
+name: Branch governance
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * 1'
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: branch-governance
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    name: Scan and report branches
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Refresh remote branch refs
+        run: git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
+      - name: Generate governance report
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node scripts/branch-governance.mjs --output "$RUNNER_TEMP/branch-governance.md"
+      - name: Publish report to job summary
+        run: cat "$RUNNER_TEMP/branch-governance.md" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: branch-governance-report
+          path: ${{ runner.temp }}/branch-governance.md
+          if-no-files-found: error
+          retention-days: 30

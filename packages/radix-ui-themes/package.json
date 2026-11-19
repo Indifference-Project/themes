@@ -1,6 +1,6 @@
 {
   "name": "@radix-ui/themes",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "type": "module",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
@@ -128,13 +128,13 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "10.4.27",
-    "esbuild": "0.20.0",
+    "esbuild": "0.28.2",
     "eslint": "^9.39.4",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.4.0",
-    "postcss": "8.5.9",
+    "postcss": "8.5.33",
     "postcss-cli": "11.0.1",
     "postcss-combine-duplicated-selectors": "10.0.3",
     "postcss-custom-media": "12.0.1",
@@ -148,12 +148,12 @@
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.72.2"
   },
-  "homepage": "https://radix-ui.com/themes",
+  "homepage": "https://github.com/yuchen0x1/themes",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/radix-ui/themes.git"
+    "url": "git+https://github.com/yuchen0x1/themes.git"
   },
   "bugs": {
-    "url": "https://github.com/radix-ui/themes/issues"
+    "url": "https://github.com/yuchen0x1/themes/issues"
   }
 }

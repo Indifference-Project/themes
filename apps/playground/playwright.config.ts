@@ -29,7 +29,7 @@ export default defineConfig({
     command: 'pnpm --filter "playground" build && pnpm --filter "playground" start',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    timeout: 240 * 1000,
     stdout: 'pipe',
     stderr: 'pipe',
   },
@@ -43,10 +43,22 @@ export default defineConfig({
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
+      testIgnore: process.env.CI ? '**/visual-regression.spec.ts' : undefined,
     },
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
+      testIgnore: process.env.CI ? '**/visual-regression.spec.ts' : undefined,
     },
-  ].filter((project) => (process.env.CI ? project.name === 'chromium' : true)),
+    {
+      name: 'android-chrome',
+      use: { ...devices['Pixel 7'] },
+      testMatch: '**/interactions.spec.ts',
+    },
+    {
+      name: 'ios-safari',
+      use: { ...devices['iPhone 15'] },
+      testMatch: '**/interactions.spec.ts',
+    },
+  ],
 });

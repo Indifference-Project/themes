@@ -2,6 +2,9 @@
 
 ## 3.4.0
 
+- Preserve custom dialog content elements when using `Dialog.Content asChild`, including with the built-in close button. Use `closeButtonLabel` to give the button a localized accessible name.
+- Improve Select placeholder and item text contrast in dark themes to satisfy WCAG AA.
+- Apply themed scrollbars and accent-colored text selection in supported browsers.
 - Upgrade the internal `radix-ui` primitives dependency to 1.8.1. This fixes `Select` form integration: the hidden native select now renders an empty option for `value=""`, so required validation works and submitted form entries no longer contain stale values ([#234](https://github.com/radix-ui/themes/issues/234), [#610](https://github.com/radix-ui/themes/issues/610), [#558](https://github.com/radix-ui/themes/issues/558))
 - Fix `Inset`'s `clip="border-box"` and `clip="padding-box"` calculations being swapped, which made the default inset stop 1px short of the card edge ([#812](https://github.com/radix-ui/themes/issues/812))
 - Invert the appearance of `Tooltip` content so accent-colored components stay readable ([#418](https://github.com/radix-ui/themes/issues/418), [#440](https://github.com/radix-ui/themes/issues/440), [#476](https://github.com/radix-ui/themes/issues/476))
