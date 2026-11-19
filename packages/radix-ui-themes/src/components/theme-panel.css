@@ -19,7 +19,12 @@
   outline: none;
   outline-width: 2px;
   position: absolute;
-  inset: 0;
+  /* Longhand instead of the `inset` shorthand: older iOS Safari does not
+     support `inset`, which would collapse these inputs to zero size. */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   border-radius: inherit;
 }
 

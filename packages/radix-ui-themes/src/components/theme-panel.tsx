@@ -246,9 +246,17 @@ const ThemePanelContent = React.forwardRef<ThemePanelContentElement, ThemePanelC
       const textToCopy = props ? `<Theme ${props}>` : '<Theme>';
 
       setCopyState('copying');
-      await navigator.clipboard.writeText(textToCopy);
-      setCopyState('copied');
-      setTimeout(() => setCopyState('idle'), 2000);
+      try {
+        // The Clipboard API is only available in secure contexts. Guard against
+        // it being missing entirely so the button never gets stuck in the
+        // "copying" state and no unhandled rejection escapes.
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+        await navigator.clipboard.writeText(textToCopy);
+        setCopyState('copied');
+        setTimeout(() => setCopyState('idle'), 2000);
+      } catch {
+        setCopyState('idle');
+      }
     }
 
     React.useEffect(() => {

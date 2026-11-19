@@ -2,6 +2,14 @@
 
 ## 3.4.0
 
+- Fix `ScrollArea` ignoring arbitrary margin values (for example `m="100px"`). It now uses the same custom properties as every other component, so responsive margin values also apply per breakpoint.
+- Fix the `sm` breakpoint of the `mx` margin utility reading the `md` custom properties, which dropped the `sm` value and reset the margin to zero.
+- Stop mutating the responsive prop objects passed to components. Frozen objects no longer throw and shared objects are no longer modified.
+- Keep the `classic` variant's border and drop shadow when a `TextField` is invalid; the red ring is now layered on top of them instead of replacing them.
+- Fix `ThemePanel`'s "Copy Theme" button throwing and getting stuck when the Clipboard API is unavailable (for example on a non-secure origin).
+- Fix the `DropdownMenu` checkbox item and submenu trigger emitting the wrong component-specific class names.
+- Use longhand offsets for the `ThemePanel` swatch inputs so they keep working on browsers without `inset` support.
+- Fix the release smoke test so the published tarball is verified against every supported React version (16.14, 17.0, 18.3 and 19.2).
 - Preserve custom dialog content elements when using `Dialog.Content asChild`, including with the built-in close button. Use `closeButtonLabel` to give the button a localized accessible name.
 - Improve Select placeholder and item text contrast in dark themes to satisfy WCAG AA.
 - Apply themed scrollbars and accent-colored text selection in supported browsers.

@@ -257,7 +257,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     >
       {children}
       <DropdownMenuPrimitive.ItemIndicator className="rt-BaseMenuItemIndicator rt-DropdownMenuItemIndicator">
-        <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-ContextMenuItemIndicatorIcon" />
+        <ThickCheckIcon className="rt-BaseMenuItemIndicatorIcon rt-DropdownMenuItemIndicatorIcon" />
       </DropdownMenuPrimitive.ItemIndicator>
       {shortcut && <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">{shortcut}</div>}
     </DropdownMenuPrimitive.CheckboxItem>
@@ -298,7 +298,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     >
       {children}
       <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">
-        <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon rt-DropdownMenuSubtriggerIcon" />
+        <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon rt-DropdownMenuSubTriggerIcon" />
       </div>
     </DropdownMenuPrimitive.SubTrigger>
   );

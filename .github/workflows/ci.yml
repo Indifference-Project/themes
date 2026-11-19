@@ -34,7 +34,9 @@ jobs:
       - name: Pack and record integrity
         run: |
           mkdir -p "$RUNNER_TEMP/release"
-          pnpm --filter @radix-ui/themes pack --pack-destination "$RUNNER_TEMP/release"
+          # `pnpm pack` cannot be combined with `--filter`/`--recursive` in
+          # pnpm 10, so run it from the package directory instead.
+          pnpm -C packages/radix-ui-themes pack --pack-destination "$RUNNER_TEMP/release"
           node scripts/release-assets.mjs "$RUNNER_TEMP/release"
       - name: Install and render the exact release tarball
         shell: bash

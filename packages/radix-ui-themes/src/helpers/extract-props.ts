@@ -65,6 +65,11 @@ function extractProps<
       }
 
       if (isResponsiveObject(value)) {
+        // Copy the responsive object before applying defaults. The object is
+        // owned by the consumer: it may be frozen, shared between components
+        // or persisted, so it must never be mutated in place.
+        value = { ...value };
+
         // Apply prop def defaults to the `initial` breakpoint
         if (propDef.default !== undefined && value.initial === undefined) {
           value.initial = propDef.default;
