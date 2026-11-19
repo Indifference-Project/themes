@@ -48,6 +48,7 @@
 - `pnpm format:check`、`pnpm lint`、`pnpm build` 全部通过。
 - Playwright 交互与回归测试 **58 项通过**（Chromium / Firefox / WebKit / Android Chrome / iOS Safari）。
 - 发布 tarball 冒烟测试在 **React 16.14 / 17.0 / 18.3 / 19.2** 全部通过。
+- 安全审计：工作区生产依赖（`pnpm audit --prod`，官方 registry）为 0 漏洞；将最终 tarball 安装到独立消费者目录后按生产依赖审计也为 0 漏洞。GitHub 上提示的 51 项 Dependabot 告警全部来自 dev/工具链传递依赖，不影响发布产物。
 
 ## 分支与仓库状态
 
