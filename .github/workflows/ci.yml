@@ -80,6 +80,9 @@ jobs:
       - name: Install Playwright browsers on Windows and macOS
         if: runner.os != 'Linux'
         run: pnpm --filter playground exec playwright install
+      - name: Set browser home for container user
+        if: runner.os == 'Linux'
+        run: echo 'HOME=/root' >> "$GITHUB_ENV"
       - name: Test component behavior
         if: runner.os != 'macOS'
         run: pnpm --filter playground exec playwright test --grep-invert "visual regression"
